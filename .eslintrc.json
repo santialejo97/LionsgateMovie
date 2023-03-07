@@ -4,7 +4,7 @@
   "plugins": ["hexagonal-architecture"],
   "overrides": [
     {
-      "files": ["src/app/pokemos/**/*.ts"],
+      "files": ["src/app/pokemos/core/**/*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json"],
         "createDefaultProgram": true

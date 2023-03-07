@@ -1,0 +1,59 @@
+<div class="row mt-5">
+  <input
+    #txtBuscar
+    type="text"
+    class="form-control"
+    placeholder="Buscar Pokemon"
+    (keyup.enter)="this.searchPokemon(txtBuscar.value)" />
+</div>
+<div class="row">
+  <div class="col-4 mt-4 p-3">
+    <p>Cantidad de Pokemones</p>
+    <select
+      #select
+      class="form-select"
+      aria-label="Default select example"
+      (change)="cantidadPokemones(select.value)">
+      <option value="10" selected>10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+    </select>
+  </div>
+</div>
+<div class="row mt-5" *ngIf="!this.mostrar">
+  <div class="col p-2 text-center" *ngFor="let pokemo of this.pokemonsDateil">
+    <div class="card bg-black text-white p-2" style="width: 18rem">
+      <img
+        [src]="pokemo.sprites.other?.dream_world?.front_default"
+        class="card-img-top widthCard"
+        alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemo.name }}</h5>
+        <a
+          [routerLink]="['/viewPokemons/pokemon/', pokemo.name]"
+          class="btn btn-success"
+          >revisar {{ pokemo.name }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5" *ngIf="this.mostrar">
+  <div class="col p-2 text-center">
+    <div class="card bg-black text-white p-2" style="width: 18rem">
+      <img
+        [src]="this.pokemon.sprites.other?.dream_world?.front_default"
+        class="card-img-top widthCard"
+        alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ this.pokemon.name }}</h5>
+        <a
+          [routerLink]="['/viewPokemons/pokemon/', this.pokemon.name]"
+          class="btn btn-success"
+          >revisar {{ this.pokemon.name }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

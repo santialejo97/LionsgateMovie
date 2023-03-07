@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-6 text-center">
+    <div class="container">
+      <div *ngIf="this.pokemon !== undefined">
+        <img
+          [src]="this.pokemon.sprites!.other?.home?.front_default"
+          [alt]="this.pokemon.name"
+          srcset="" />
+      </div>
+    </div>
+  </div>
+  <div class="col-6" *ngIf="this.detail !== undefined">
+    <h1>{{ detail.name | titlecase }}</h1>
+    <div class="d-flex flex-row">
+      <p class="m-2" *ngFor="let name of detail.names">{{ name.name }}</p>
+    </div>
+    <hr />
+    <div class="mt-2">
+      <p *ngFor="let descripcion of detail.form_descriptions">
+        {{ descripcion.description }}
+      </p>
+    </div>
+  </div>
+</div>
